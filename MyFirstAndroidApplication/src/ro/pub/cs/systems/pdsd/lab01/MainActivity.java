@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -23,7 +24,12 @@ public class MainActivity extends Activity {
 		public void onClick(View view) {
 			EditText userNameEditText = (EditText)findViewById(R.id.user_name_edit_text);
 			TextView greetingTextView = (TextView)findViewById(R.id.greeting_text_view);
+			greetingTextView.setText( greetingTextView.getText().toString().replace("xxx", userNameEditText.getText()));
 			greetingTextView.setAlpha(1);
+			AlphaAnimation al = new AlphaAnimation(1.0f, (float) 0.0);
+			al.setDuration(TRANSPARENCY_EFFECT_DURATION);
+			al.setFillAfter(true);
+			greetingTextView.setAnimation(al);
 		}
 		
 	}
